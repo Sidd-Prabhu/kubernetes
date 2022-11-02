@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginxapp-deployment
+  namespace: siddnamespace
+  labels:
+    app: nginxapp
+    tier: front-end
+spec:
+  selector:
+    matchLabels:
+      app: nginxapp
+  replicas: 3
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginxapp
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
+
